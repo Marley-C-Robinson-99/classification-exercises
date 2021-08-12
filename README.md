@@ -1,0 +1,1 @@
+This repo will containt all of my classification exercises and projects for classification.
