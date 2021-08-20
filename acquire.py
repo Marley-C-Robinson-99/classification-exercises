@@ -46,3 +46,16 @@ def get_iris_data():
         # Return the dataframe to the calling code
         return df  
 print(get_iris_data())
+
+def get_telco_data():
+    filename = "telco.csv"
+
+    if os.path.isfile(filename):
+        return pd.read_csv(filename)
+    else:
+        # read the SQL query into a dataframe
+        df = pd.read_sql('SELECT * FROM customers', get_db_url(db = 'telco_churn'))
+        # Write that dataframe to disk for later. Called "caching" the data for later.
+        df.to_csv(filename)
+        # Return the dataframe to the calling code
+        return df

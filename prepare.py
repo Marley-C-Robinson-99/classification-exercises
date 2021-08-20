@@ -74,7 +74,7 @@ def prep_titanic(df):
     df = df[~df.embarked.isnull()]
     
     # encode embarked using dummy columns
-    titanic_dummies = pd.get_dummies(df[['sex', 'embark_town']])
+    titanic_dummies = pd.get_dummies(df['embark_town'])
     
     # join dummy columns back to df
     df = pd.concat([df, titanic_dummies], axis=1)
@@ -82,6 +82,7 @@ def prep_titanic(df):
     # drop the deck column
     df = df.drop(columns=['deck', 'embarked', 'embark_town', 'pclass'])
     df['class'] = df['class'].replace(['First', 'Second', 'Third'], [1,2,3])
+    df['sex'] = df['sex'].replace(['male', 'female'], [1,0])
     # split data into train, validate, test dfs
     train, validate, test = titanic_split(df)
     
