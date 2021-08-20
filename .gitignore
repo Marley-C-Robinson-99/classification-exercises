@@ -4,4 +4,6 @@ env.py
 __pycache__
 titanic.csv
 iris.csv
-.csv/
+*.csv
+titanic_decision_tree
+*.pdf
